@@ -2,65 +2,85 @@
 
 > **The Integration Layer for Arkheion Sovereign AI.**
 
-Archon Hub is the official distribution point for the **Archon SDK** and integration tools. It allows developers to connect their applications to the local Arkheion network and leverage high-performance ternary models.
+Archon Hub is the official distribution point for the **Archon SDK** and integration tools. It enables developers and organizations to leverage high-performance **Ternary Neural Networks** locally, without compromising data sovereignty or performance.
 
-## 📦 What's inside?
+---
 
-- **Archon SDK**: Professional Rust library to communicate with local Arkheion Daemons.
-- **Archon CLI (Binary)**: Universal tool to compress GGUF models into HTCV4.
-- **Archon Daemon (Binary)**: Local server for model management and inference.
-- **Integration Manuals**: Complete guides on how to embed sovereign AI into your software.
-- **API Reference**: Detailed technical specs for the Archon local endpoints.
+## 🧬 What is Archon?
 
-## ⚙️ Binary Installation
+Archon is the bridge between the complex world of **Arkheion Forge** and your application. It utilizes **HTCV4 (Holographic Ternary Compression)** to run large language models on consumer-grade hardware with extreme efficiency.
 
-The tools are available in the `bin/` directory for Linux x64:
+### 🌟 Key Advantages
+*   **Extreme Compression**: Models that traditionally require 24GB of VRAM are compressed to run in less than 8GB.
+*   **Total Sovereignty**: No API calls to external clouds. Your intelligence is local.
+*   **Native Speed**: Written in pure Rust for bare-metal performance.
+
+---
+
+## 📦 What's inside this Repository?
+
+-   **Archon SDK**: Professional Rust library for seamless integration.
+-   **Archon CLI (Binaries)**: Interactive tool to compress standard GGUF models into the high-performance `.htcv4` format.
+-   **Archon Daemon (Binaries)**: The local "Intelligent Router" that serves models via a high-speed REST API.
+-   **Documentation**: Comprehensive guides and technical references.
+
+---
+
+## ⚙️ Installation & Usage
+
+### 1. Ready the Tools (Linux x64)
+The binaries are pre-compiled and located in the `bin/` folder.
 
 ```bash
-# Give execution permissions
+# Set permissions
 chmod +x bin/archon bin/archon-daemon
 
-# Run the packager
+# Start the compression engine (Interactive mode)
 ./bin/archon pack --interactive
 ```
 
-## 🚀 Getting Started
-
-### 1. Install the SDK
-Add `archon-sdk` to your project:
-
-```toml
-[dependencies]
-archon-sdk = "0.9"
-```
-
-### 2. Connect to a Local Daemon
-Ensure you have the `archon-daemon` running:
+### 2. Launch the Intelligence Engine
+Start the daemon to begin serving your local models:
 
 ```bash
 ./bin/archon-daemon
 ```
 
-Then, in your Rust code:
+### 3. Integrate via SDK (Rust)
+Add the SDK to your `Cargo.toml`:
+```toml
+[dependencies]
+archon-sdk = "0.9"
+```
 
+Implement in your code:
 ```rust
 use archon_sdk::ArchonClient;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     let client = ArchonClient::default();
-    let response = client.generate("Hello, Arkheion!").await?;
-    println!("Response: {}", response.text);
+    
+    // The Archon Daemon automatically routes your request to the best specialist model.
+    let response = client.generate("fn main() { }").await?;
+    
+    println!("Model: {}", response.model_used);
+    println!("Output: {}", response.text);
     Ok(())
 }
 ```
 
-## 📚 Resources
-- [Full Integration Guide](docs/integration_manual.md)
-- [API Reference](docs/api_reference.md)
+---
 
-## 🛡️ License
-Licensed under the MIT License.
+## 📚 Technical Documentation
+
+Explore our deep-dive manuals to master the Archon ecosystem:
+*   [**Integration Manual**](docs/integration_manual.md): Comprehensive guide for developers.
+*   [**API Reference**](docs/api_reference.md): Technical specs for REST integration (Python, JS, etc).
 
 ---
-**Powered by Arkheion Forge**
+
+## 🛡️ License
+This project is licensed under the **MIT License**.
+
+Built with 🧬 **Arkheion Forge** - *Democratizing Sovereign Intelligence.*
